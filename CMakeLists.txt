@@ -3,4 +3,6 @@ project(RubiksChamp_V1)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(RubiksChamp_V1 main.cpp)
+add_executable(RubiksChamp_V1 main.cpp
+        GenericRubiksCube.cpp
+        GenericRubiksCube.h)
