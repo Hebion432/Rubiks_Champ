@@ -1,5 +1,5 @@
 //
-// Created by Amit Kumar 09-March-2025
+// Created by Amit Kumar 09/03/2025
 //
 
 #ifndef RUBIKSCUBE_H
@@ -56,19 +56,22 @@ public:
         DPRIME
     };
     //1.unsigned is used here because row and col must be positive
+	// virtual will make the class abstract( object can be make if it has implementation ) but const == 0 will make it purely abstract ( no object can be made )
     //2.const is used here because the function should not by any circumstance modify the object it is called upon
 
-    //these can be implemented in abstract class only because
-    //it is independent from models
-
+    //these can be implemented in abstract class only because it is independent from models
 
     virtual COLOR getColor(FACE face, unsigned row, unsigned col) const = 0;
 
+	/*
+     * Returns the first letter of the given COLOR
+     * Eg: For COLOR::GREEN, it returns 'G'
+     */
     char getColorLetter(COLOR color)const;
 
     void printColor(char c);
 
-    void print();
+    void print() const;
 
     virtual bool isSolved()const=0;
 
@@ -81,12 +84,23 @@ public:
     RubiksCube &invert(MOVE move);
 
     //to randomly shuffle the cube and give the moves performed
-    vector<MOVE> randomShuffle(int times);
+    vector<MOVE> randomShuffle(unsigned int times);
 
     //To see if the cube is solved or not
     bool isSolved(RubiksCube &c);
 
-    // 18 fundamental moves
+	/*
+     * 18 fundamental moves
+	 *  F2 == F'2 ( that's why those moves are not considered )
+     *
+     * F, F’, F2,
+     * U, U’, U2,
+     * L, L’, L2,
+     * D, D’, D2,
+     * R, R’, R2,
+     * B, B’, B2
+     */
+
     virtual RubiksCube &U() = 0;      // Up clockwise
     virtual RubiksCube &UPRIME() = 0; // Up counterclockwise
     virtual RubiksCube &U2() = 0;     // Up 180 degrees
@@ -110,6 +124,8 @@ public:
     virtual RubiksCube &B() = 0;      // Back clockwise
     virtual RubiksCube &BPRIME() = 0; // Back counterclockwise
     virtual RubiksCube &B2() = 0;     // Back 180 degrees
+
+
     string getCornerColorString(uint8_t ind) const;
 
     uint8_t getCornerIndex(uint8_t ind) const;
