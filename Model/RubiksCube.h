@@ -1,5 +1,5 @@
 //
-// Created by Amit Kumar 09/03/2025
+// Created by Amit Kumar 18/03/2025
 //
 
 #ifndef RUBIKSCUBE_H
@@ -61,33 +61,79 @@ public:
 
     //these can be implemented in abstract class only because it is independent from models
 
+
+
     virtual COLOR getColor(FACE face, unsigned row, unsigned col) const = 0;
 
 	/*
      * Returns the first letter of the given COLOR
      * Eg: For COLOR::GREEN, it returns 'G'
      */
-    char getColorLetter(COLOR color)const;
+    static char getColorLetter(COLOR color);
 
-    void printColor(char c);
-
-    void print() const;
-
-    virtual bool isSolved()const=0;
-
-    string getMoveLetter(MOVE m);
-
-    //to implement moves
-    RubiksCube &move(MOVE move);
-
-    //to invert the implemented moves
-    RubiksCube &invert(MOVE move);
-
-    //to randomly shuffle the cube and give the moves performed
-    vector<MOVE> randomShuffle(unsigned int times);
 
     //To see if the cube is solved or not
-    bool isSolved(RubiksCube &c);
+    virtual bool isSolved()const=0;
+
+
+    // return the move in the string format ( f -> "f")
+    static string getMoveLetter(MOVE ind);
+
+    /*
+     * Print the Rubik Cube in Planar format.
+     *
+     * The cube is laid out as follows.
+     *
+     * The sides:
+     *    U
+     *  L F R B
+     *    D
+     *
+     * Color wise:
+     *
+     *          W W W
+     *          W W W
+     *          W W W
+     *
+     *  G G G   R R R   B B B   O O O
+     *  G G G   R R R   B B B   O O O
+     *  G G G   R R R   B B B   O O O
+     *
+     *          Y Y Y
+     *          Y Y Y
+     *          Y Y Y
+     *
+     * Row and Column Numberings:
+     * rx -> row numbering
+     * cx -> column numbering
+     * bx -> both row and column numbering
+     *
+     *             b0 c1 c2
+     *             r1  .  .
+     *             r2  .  .
+     *
+     *  b0 c1 c2   b0 c1 c2   b0 c1 c2   b0 c1 c2
+     *  r1  .  .   r1  .  .   r1  .  .   r1  .  .
+     *  r2  .  .   r2  .  .   r2  .  .   r2  .  .
+     *
+     *             b0 c1 c2
+     *             r1  .  .
+     *             r2  .  .
+     *
+     */
+    void print() const;
+
+
+    //to implement moves
+    RubiksCube &move(MOVE ind);
+
+    //to invert the implemented moves
+    RubiksCube &invert(MOVE ind);
+
+
+    //to randomly shuffle the cube with time and give the moves performed
+    vector<MOVE> randomShuffle(unsigned int times);
+
 
 	/*
      * 18 fundamental moves
@@ -101,29 +147,31 @@ public:
      * B, B’, B2
      */
 
-    virtual RubiksCube &U() = 0;      // Up clockwise
-    virtual RubiksCube &UPRIME() = 0; // Up counterclockwise
-    virtual RubiksCube &U2() = 0;     // Up 180 degrees
+    virtual RubiksCube &u() = 0;      // Up clockwise
+    virtual RubiksCube &uPrime() = 0; // Up counterclockwise
+    virtual RubiksCube &u2() = 0;     // Up 180 degrees
 
-    virtual RubiksCube &D() = 0;      // Down clockwise
-    virtual RubiksCube &DPRIME() = 0; // Down counterclockwise
-    virtual RubiksCube &D2() = 0;     // Down 180 degrees
+    virtual RubiksCube &d() = 0;      // Down clockwise
+    virtual RubiksCube &dPrime() = 0; // Down counterclockwise
+    virtual RubiksCube &d2() = 0;     // Down 180 degrees
 
-    virtual RubiksCube &L() = 0;      // Left clockwise
-    virtual RubiksCube &LPRIME() = 0; // Left counterclockwise
-    virtual RubiksCube &L2() = 0;     // Left 180 degrees
+    virtual RubiksCube &l() = 0;      // Left clockwise
+    virtual RubiksCube &lPrime() = 0; // Left counterclockwise
+    virtual RubiksCube &l2() = 0;     // Left 180 degrees
 
-    virtual RubiksCube &R() = 0;      // Right clockwise
-    virtual RubiksCube &RPRIME() = 0; // Right counterclockwise
-    virtual RubiksCube &R2() = 0;     // Right 180 degrees
+    virtual RubiksCube &r() = 0;      // Right clockwise
+    virtual RubiksCube &rPrime() = 0; // Right counterclockwise
+    virtual RubiksCube &r2() = 0;     // Right 180 degrees
 
-    virtual RubiksCube &F() = 0;      // Front clockwise
-    virtual RubiksCube &FPRIME() = 0; // Front counterclockwise
-    virtual RubiksCube &F2() = 0;     // Front 180 degrees
+    virtual RubiksCube &f() = 0;      // Front clockwise
+    virtual RubiksCube &fPrime() = 0; // Front counterclockwise
+    virtual RubiksCube &f2() = 0;     // Front 180 degrees
 
-    virtual RubiksCube &B() = 0;      // Back clockwise
-    virtual RubiksCube &BPRIME() = 0; // Back counterclockwise
-    virtual RubiksCube &B2() = 0;     // Back 180 degrees
+    virtual RubiksCube &b() = 0;      // Back clockwise
+    virtual RubiksCube &bPrime() = 0; // Back counterclockwise
+    virtual RubiksCube &b2() = 0;     // Back 180 degrees
+
+
 
 
     string getCornerColorString(uint8_t ind) const;

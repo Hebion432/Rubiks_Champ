@@ -1,9 +1,5 @@
 //
-// Created by Amit on 21/06/25.
-//
-
-//
-// Created by Lakshya Mittal on 17-12-2021.
+// Created by Amit Kumar 09/03/2025
 //
 
 #include "RubiksCube.h"
@@ -41,7 +37,7 @@ public:
 
     // and since we have made and enum class we have to return COLOR::BLUE
 
-    // it return the color of a specific cell
+    // it returns the color of a specific cell
     COLOR getColor(FACE face, unsigned row, unsigned col) const override {
         char color = cube[int(face)][row][col]; //int(face) changes it to integer
         switch (color) {
