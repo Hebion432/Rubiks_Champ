@@ -167,3 +167,67 @@ RubiksCube &RubiksCube::invert(MOVE ind) {
             return this->b2();
     }
 }
+
+
+
+// so what we are doing is we are simply printing here only, but we will define the getColor in derived classes to get the cube cell color of that cube
+void RubiksCube::print() const {
+    cout << "Rubik's Cube:\n\n";
+
+    for (int row = 0; row <= 2; row++) {
+        for (unsigned i = 0; i < 7; i++) cout << " ";
+        for (int col = 0; col <= 2; col++) {
+            cout << getColorLetter(getColor(FACE::UP, row, col)) << " ";
+        }
+        cout << "\n";
+    }
+
+    cout << "\n";
+
+    for (int row = 0; row <= 2; row++) {
+
+        for (int col = 0; col <= 2; col++) {
+            cout << getColorLetter(getColor(FACE::LEFT, row, col)) << " ";
+        }
+        cout << " ";
+
+        for (int col = 0; col <= 2; col++) {
+            cout << getColorLetter(getColor(FACE::FRONT, row, col)) << " ";
+        }
+        cout << " ";
+
+        for (int col = 0; col <= 2; col++) {
+            cout << getColorLetter(getColor(FACE::RIGHT, row, col)) << " ";
+        }
+        cout << " ";
+
+        for (int col = 0; col <= 2; col++) {
+            cout << getColorLetter(getColor(FACE::BACK, row, col)) << " ";
+        }
+        cout << "\n";
+    }
+
+    cout << "\n";
+
+    for (int row = 0; row <= 2; row++) {
+        for (unsigned i = 0; i < 7; i++) cout << " ";
+        for (int col = 0; col <= 2; col++) {
+            cout << getColorLetter(getColor(FACE::DOWN, row, col)) << " ";
+        }
+        cout << "\n";
+    }
+    cout << "\n";
+}
+
+// randomly shuffle the cube
+// static cast is used to convert from number to move or move to number
+vector<RubiksCube::MOVE> RubiksCube::randomShuffleCube(unsigned int times) {
+    vector<MOVE> moves_performed;
+    srand(time(0)); // so that srand() -> doen't return the same value everytime
+    for (unsigned int i = 0; i < times; i++) {
+        unsigned int selectMove = (rand() % 18);
+        moves_performed.push_back(static_cast<MOVE>(selectMove)); // save the move
+        this->move(static_cast<MOVE>(selectMove)); // perform the move
+    }
+    return moves_performed;
+}

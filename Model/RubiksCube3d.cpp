@@ -38,6 +38,7 @@ public:
     // and since we have made and enum class we have to return COLOR::BLUE
 
     // it returns the color of a specific cell
+    // using this only we are implementing the print function in the header file only
     COLOR getColor(FACE face, unsigned row, unsigned col) const override {
         char color = cube[int(face)][row][col]; //int(face) changes it to integer
         switch (color) {
@@ -69,6 +70,204 @@ public:
         return true;
     }
 
+
+
+
+
+    RubiksCube &uPrime() override{
+        rotateFace(0);
+        char a[3];
+        for(int i=0;i<3;i++){
+            a[i]=cube[1][0][i];
+            cube[1][0][i]=cube[4][0][i];
+        }
+        for(int i=0;i<3;i++){
+            cube[4][0][i]=cube[3][0][i];
+        }
+        for(int i=0;i<3;i++){
+            cube[3][0][i]=cube[2][0][i];
+        }
+        for(int i=0;i<3;i++){
+            cube[2][0][i]=a[i];
+        }
+
+        return *this;
+    }
+    RubiksCube &u() override{
+        this->uPrime();
+        this->uPrime();
+        this->uPrime();
+        return *this;
+    }
+    RubiksCube &u2() override{
+        this->uPrime();
+        this->uPrime();
+        return *this;
+    }
+
+    RubiksCube &l() override{
+        rotateFace(1);
+        char a[3];
+        for(int i=0;i<3;i++){
+            a[i]=cube[5][i][0];
+            cube[5][i][0]=cube[2][i][0];
+        }
+        for(int i=0;i<3;i++){
+            cube[2][i][0]=cube[0][i][0];
+        }
+        for(int i=0;i<3;i++){
+            cube[0][i][0]=cube[4][2-i][2];
+        }
+        for(int i=0;i<3;i++){
+            cube[4][i][2]=a[2-i];
+        }
+        return *this;
+    }
+    RubiksCube &lPrime() override{
+        this->l();
+        this->l();
+        this->l();
+        return *this;
+    }
+    RubiksCube &l2() override{
+        this->l();
+        this->l();
+        return *this;
+    }
+
+    RubiksCube &f() override{
+        rotateFace(2);
+        char a[3];
+        for(int i=0;i<3;i++){
+            a[i]=cube[0][2][i];
+            cube[0][2][i]=cube[1][2-i][2];
+        }
+        for(int i=0;i<3;i++){
+            cube[1][i][2]=cube[5][0][i];
+        }
+        for(int i=0;i<3;i++){
+            cube[5][0][i]=cube[3][2-i][0];
+        }
+        for(int i=0;i<3;i++){
+            cube[3][i][0]=a[i];
+        }
+
+        return *this;
+    }
+    RubiksCube &fPrime() override{
+        this->f();
+        this->f();
+        this->f();
+        return *this;
+    }
+    RubiksCube &f2() override{
+        this->f();
+        this->f();
+        return *this;
+    }
+
+    RubiksCube &r()override {
+        rotateFace(3);
+        char a[3];
+        for(int i=0;i<3;i++){
+            a[i]=cube[0][i][2];
+            cube[0][i][2]=cube[2][i][2];
+        }
+        for(int i=0;i<3;i++){
+            cube[2][i][2]=cube[5][i][2];
+        }
+        for(int i=0;i<3;i++){
+            cube[5][i][2]=cube[4][2-i][0];
+        }
+        for(int i=0;i<3;i++){
+            cube[4][i][0]=a[2-i];
+        }
+        return *this;
+    }
+
+    RubiksCube &rPrime() override{
+        this-> r();
+        this-> r();
+        this-> r();
+
+        return *this;
+    }
+
+    RubiksCube &r2() override{
+        this-> r();
+        this-> r();
+
+        return *this;
+    }
+
+    RubiksCube &b() override{
+        rotateFace(4);
+
+        char a[3];
+
+        for(int i=0;i<3;i++){
+            a[i]=cube[0][0][i];
+            cube[0][0][i]=cube[3][i][2];
+        }
+        for(int i=0;i<3;i++){
+            cube[3][i][2]=cube[5][2][2-i];
+        }
+        for(int i=0;i<3;i++){
+            cube[5][2][i]=cube[1][i][0];
+        }
+        for(int i=0;i<3;i++){
+            cube[1][i][0]=a[2-i];
+        }
+
+        return *this;
+    }
+
+    RubiksCube &bPrime() override{
+        this -> b();
+        this -> b();
+        this -> b();
+        return *this;
+    }
+    RubiksCube &b2() override{
+        this -> b();
+        this -> b();
+        return *this;
+    }
+
+    RubiksCube &d() override{
+        rotateFace(5);
+
+        char a[3];
+        for(int i=0;i<3;i++){
+            a[i]=cube[1][2][i];
+            cube[1][2][i]=cube[4][2][i];
+        }
+        for(int i=0;i<3;i++){
+            cube[4][2][i]=cube[3][2][i];
+        }
+        for(int i=0;i<3;i++){
+            cube[3][2][i]=cube[2][2][i];
+        }
+        for(int i=0;i<3;i++){
+            cube[2][2][i]=a[i];
+        }
+
+        return *this;
+    }
+
+    RubiksCube &dPrime() override{
+        this->d();
+        this->d();
+        this->d();
+
+        return *this;
+    }
+    RubiksCube &d2() override{
+        this->d();
+        this->d();
+
+        return *this;
+    }
+
+
 };
-
-
