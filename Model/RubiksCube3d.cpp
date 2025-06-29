@@ -4,7 +4,7 @@
 
 #include "RubiksCube.h"
 
-class RubiksCube3dArray : public RubiksCube {
+class RubiksCube3d : public RubiksCube {
 private:
 
     // 90degree clcokwise turn
@@ -25,7 +25,7 @@ public:
     char cube[6][3][3]{};
 
     // constructor - set up a solved cube
-    RubiksCube3dArray() {
+    RubiksCube3d() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 3; j++) {
                 for (int k = 0; k < 3; k++)

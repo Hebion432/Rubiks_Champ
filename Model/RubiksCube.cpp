@@ -5,16 +5,19 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <unordered_set>
-#include <unordered_map>
+#include <map>
+#include <set>
 #include <algorithm>
+#include <cmath>      // if using math functions
+#include <limits>     // for numeric_limits
+
 
 using namespace std;
 #include "RubiksCube.h"
 
 
 // Given the color return it's first letter
-char RubiksCube::getColorLetter(COLOR color)
+char RubiksCube::getColorLetter(RubiksCube::COLOR color)
 {
     switch (color)
     {
@@ -127,6 +130,7 @@ RubiksCube &RubiksCube::move(MOVE ind) {
         case MOVE::B2:
             return this->b2();
     }
+    return *this;
 }
 
 
@@ -172,6 +176,7 @@ RubiksCube &RubiksCube::invert(MOVE ind) {
         case MOVE::B2:
             return this->b2();
     }
+    return *this;
 }
 
 
@@ -227,7 +232,7 @@ void RubiksCube::print() const {
 
 // randomly shuffle the cube
 // static cast is used to convert from number to move or move to number
-vector<RubiksCube::MOVE> RubiksCube::randomShuffleCube(unsigned int times) {
+vector<RubiksCube::MOVE> RubiksCube::randomShuffle(unsigned int times) {
     vector<MOVE> moves_performed;
     srand(time(0)); // so that srand() -> doen't return the same value everytime
     for (unsigned int i = 0; i < times; i++) {
