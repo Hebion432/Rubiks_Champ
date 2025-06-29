@@ -1,16 +1,69 @@
-#include <iostream>
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+// Created by Lakshya Mittal on 17-12-2021.
+//
+
+#include <bits/stdc++.h>
+#include "Model/RubiksCube3dArray.cpp"
+using namespace std;
+
 int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the <b>lang</b> variable name to see how CLion can help you rename it.
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+    RubiksCube3dArray object3DArray;
+    object3DArray.print();
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
-    }
+    if (object3DArray.isSolved()) cout << "SOLVED\n\n";
+    else cout << "NOT SOLVED\n\n";
+
+
+    object3DArray.u();
+    object3DArray.print();
+
+    object3DArray.l();
+    object3DArray.print();
+
+    object3DArray.f();
+    object3DArray.print();
+
+    object3DArray.r();
+    object3DArray.print();
+
+    object3DArray.b();
+    object3DArray.print();
+
+
+    object3DArray.d();
+    object3DArray.print();
+
+
+    if (object3DArray.isSolved()) cout << "SOLVED\n\n";
+    else cout << "NOT SOLVED\n\n";
+
+
+    object3DArray.dPrime();
+    object3DArray.print();
+
+    object3DArray.bPrime();
+    object3DArray.print();
+
+
+    object3DArray.rPrime();
+    object3DArray.print();
+
+
+    object3DArray.fPrime();
+    object3DArray.print();
+
+
+    object3DArray.lPrime();
+    object3DArray.print();
+
+
+    object3DArray.uPrime();
+    object1dArray.uPrime();
+    object3DArray.print();
+    object1dArray.print();
+
+    if (object3DArray.isSolved()) cout << "SOLVED\n\n";
+    else cout << "NOT SOLVED\n\n";
 
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }

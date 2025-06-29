@@ -268,6 +268,4 @@ public:
 
         return *this;
     }
-
-
 };
