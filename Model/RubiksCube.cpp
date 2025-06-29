@@ -2,7 +2,13 @@
 // Created by Amit Kumar 18/03/2025
 //
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <unordered_set>
+#include <unordered_map>
+#include <algorithm>
+
 using namespace std;
 #include "RubiksCube.h"
 
