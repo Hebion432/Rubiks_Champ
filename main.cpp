@@ -12,19 +12,19 @@
 #include <limits>     // for numeric_limits
 
 
-#include "Model/RubiksCube3d.cpp"
+#include "Model/RubiksCube1d.cpp"
 using namespace std;
 
 int main() {
-    RubiksCube3d object3DArray;
+    RubiksCube1d object3DArray;
     object3DArray.print();
 
     // if (object3DArray.isSolved()) cout << "SOLVED\n\n";
     // else cout << "NOT SOLVED\n\n";
 
     //
-    // object3DArray.u();
-    // object3DArray.print();
+    object3DArray.u();
+    object3DArray.print();
     //
     // object3DArray.l();
     // object3DArray.print();

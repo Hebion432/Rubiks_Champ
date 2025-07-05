@@ -4,7 +4,7 @@
 
 #include "RubiksCube.h"
 
-class RubiksCube1dArray : public RubiksCube {
+class RubiksCube1d : public RubiksCube {
 private:
     static inline int getIndex (int ind,int row,int col){
         return ind*9+row*3+col; // each face-> 9 elements, each row-> 3 elements, each cell-> 1 element
@@ -24,7 +24,7 @@ private:
 public:
     char cube[54]{}; // 54 elements in a 1D array
 
-    RubiksCube1dArray(){
+    RubiksCube1d(){
         for(int i=0;i<6;i++){
             for(int j=0;j<3;j++){
                 for(int k=0;k<3;k++){
@@ -34,7 +34,7 @@ public:
         }
     }
 
-    COLOR getColor(FACE face, int row, int col) {
+    COLOR getColor(FACE face, unsigned row, unsigned col) const override {
         char color= cube[getIndex(static_cast<int>(face),row,col)];
         switch (color) {
             case 'B':
@@ -50,7 +50,9 @@ public:
             case 'W':
                 return COLOR::WHITE;
         }
+        return COLOR::WHITE;
     }
+
 
     bool isSolved() const override{
         for(int i=0;i<6;i++){
@@ -274,14 +276,14 @@ public:
         return *this;
     }
 
-    bool operator==(const RubiksCube1dArray &r1) const {
+    bool operator==(const RubiksCube1d &r1) const {
         for(int i=0;i<54;i++){
-            if(cube[i]!=r1.cube[i]) return false;   //.cube as its a object inside the RubiksCube1dArray class
+            if(cube[i]!=r1.cube[i]) return false;   //.cube as its a object inside the RubiksCube1d class
         }
         return true;
     }
 
-    RubiksCube1dArray &operator=(const RubiksCube1dArray &r1){
+    RubiksCube1d &operator=(const RubiksCube1d &r1){
         for(int i=0;i<54;i++){
             cube[i]=r1.cube[i];     //its assigning to object and according to its variable it will get assigned
         }
@@ -291,7 +293,7 @@ public:
 };
 
 struct Hash1d {  // Hash function for 1D array
-    size_t operator()(const RubiksCube1dArray &r1) const{  //operator overloading for hash function
+    size_t operator()(const RubiksCube1d &r1) const{  //operator overloading for hash function
         string str = "";  //hash is a string
         for(int i=0;i<54;i++){  //54 elements in a 1D array
             str+=r1.cube[i];
