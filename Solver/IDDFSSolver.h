@@ -2,7 +2,15 @@
 // Created by Amit on 06/05/25.
 //
 
-#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+#include <set>
+#include <algorithm>
+#include <cmath>      // if using math functions
+#include <limits>     // for numeric_limits
+
 #include "../Model/RubiksCube.h"
 #include "DFSSolver.h"
 
