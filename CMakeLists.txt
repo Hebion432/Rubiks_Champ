@@ -11,4 +11,5 @@ add_executable(RubiksChamp_V1
         Solver/BFSSolver.h
         Solver/DFSSolver.h
         Solver/IDDFSSolver.h
-        Model/PatternDatabase/PatternDatabase.h)
+        Model/PatternDatabase/PatternDatabase.h
+        Solver/IDAstarSolver.h)
