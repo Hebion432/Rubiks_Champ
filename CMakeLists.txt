@@ -10,4 +10,5 @@ add_executable(RubiksChamp_V1
         Model/RubiksCube1d.cpp
         Solver/BFSSolver.h
         Solver/DFSSolver.h
-        Solver/IDDFSSolver.h)
+        Solver/IDDFSSolver.h
+        Model/PatternDatabase/PatternDatabase.h)
