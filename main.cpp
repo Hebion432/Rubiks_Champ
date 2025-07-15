@@ -14,6 +14,7 @@
 
 #include "Model/RubiksCube3d.cpp"
 #include "Solver/IDDFSSolver.h"
+#include "Solver/BFSSolver.h"
 using namespace std;
 
 int main() {
@@ -216,20 +217,20 @@ int main() {
     // bfsSolver.rubiksCube.print();
 
     // IDDFS Solver ----------------------------------------------------------------------------------------------------
-    RubiksCube3d cube;
-    cube.print();
-
-    vector<RubiksCube::MOVE> shuffle_moves = cube.randomShuffle(7);
-    for (auto move: shuffle_moves) cout << cube.getMoveLetter(move) << " ";
-    cout << "\n";
-    cube.print();
-
-    IDDFSSolver<RubiksCube3d, Hash3d> iddfsSolver(cube, 8);
-    vector<RubiksCube::MOVE> solve_moves = iddfsSolver.solve();
-
-    for (auto move: solve_moves) cout << cube.getMoveLetter(move) << " ";
-    cout << "\n";
-    iddfsSolver.rubiksCube.print();
+    // RubiksCube3d cube;
+    // cube.print();
+    //
+    // vector<RubiksCube::MOVE> shuffle_moves = cube.randomShuffle(7);
+    // for (auto move: shuffle_moves) cout << cube.getMoveLetter(move) << " ";
+    // cout << "\n";
+    // cube.print();
+    //
+    // IDDFSSolver<RubiksCube3d, Hash3d> iddfsSolver(cube, 8);
+    // vector<RubiksCube::MOVE> solve_moves = iddfsSolver.solve();
+    //
+    // for (auto move: solve_moves) cout << cube.getMoveLetter(move) << " ";
+    // cout << "\n";
+    // iddfsSolver.rubiksCube.print();
 
     return 0;
 }

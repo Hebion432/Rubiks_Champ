@@ -22,7 +22,7 @@ class IDAstarSolver {
 private:
     PatternDatabase<T> patternDB;
     vector<RubiksCube::MOVE> moves;
-    unordered_map<T, RubiksCube::MOVE, H> move_done;
+    unordered_map<T, RubiksCube::MOVE, H> move_done;  // Maps a cube state to the move taken to reach it
     unordered_map<T, bool, H> visited;
 
     struct Node {
@@ -33,7 +33,7 @@ private:
         Node(T _cube, int _depth, int _estimate) : cube(_cube), depth(_depth), estimate(_estimate) {};
     };
 
-    struct compareCube {
+    struct compareCube { //Orders nodes by their f = g + h (depth + estimate) value,In case of tie, prefer node with lower heuristic.
         bool operator()(pair<Node, int> const &p1, pair<Node, int> const &p2) {
             auto n1 = p1.first, n2 = p2.first;
             if (n1.depth + n1.estimate == n2.depth + n2.estimate) {
@@ -54,7 +54,8 @@ private:
 //        priority_queue contains pair(Node, move done to reach that)
         priority_queue<pair<Node, int>, vector<pair<Node, int>>, compareCube> pq;
         Node start = Node(rubiksCube, 0, patternDB.getEstimate(rubiksCube));
-        pq.push(make_pair(start, 0));
+        pq.push(make_pair(start, 0)); // we are adding MOVE 0 -> but it's just a dummy move as we will never we taking this move in answer
+
         int next_bound = 100;
         while (!pq.empty()) {
             auto p = pq.top();
@@ -62,15 +63,17 @@ private:
             pq.pop();
 
             if (visited[node.cube]) continue;
-
             visited[node.cube] = true;
+
             move_done[node.cube] = RubiksCube::MOVE(p.second);
 
             if (node.cube.isSolved()) return make_pair(node.cube, bound);
             node.depth++;
+
             for (int i = 0; i < 18; i++) {
                 auto curr_move = RubiksCube::MOVE(i);
                 node.cube.move(curr_move);
+
                 if (!visited[node.cube]) {
                     node.estimate = patternDB.getEstimate(node.cube);
                     if (node.estimate + node.depth > bound) {
