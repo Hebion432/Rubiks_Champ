@@ -16,4 +16,7 @@ add_executable(RubiksChamp_V1
         PatternDatabases/NibbleArray.h
         PatternDatabases/NibbleArray.cpp
         PatternDatabases/PatternDatabase.cpp
-        PatternDatabases/PatternDatabase.h)
+        PatternDatabases/PatternDatabase.h
+        PatternDatabases/PermutationIndexer.h
+        PatternDatabases/math.cpp
+        PatternDatabases/math.h)
