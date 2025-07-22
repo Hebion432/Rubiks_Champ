@@ -15,13 +15,19 @@
 #include "Model/RubiksCube3d.cpp"
 #include "Solver/IDDFSSolver.h"
 #include "Solver/BFSSolver.h"
+#include "Solver/DFSSolver.h"
+#include "Solver/BFSSolver.h"
+#include "Solver/IDDFSSolver.h"
+#include "Solver/IDAstarSolver.h"
+#include "PatternDatabases/CornerPatternDatabase.h"
+#include "PatternDatabases/CornerDBMaker.h"
 using namespace std;
 
 int main() {
 
 //    RubiksCube3d object3DArray;
 //    RubiksCube1d object1dArray;
-//    RubiksCubeBitboard objectBitboard;
+//    RubiksCube3d objectBitboard;
 //
 //    object3DArray.print();
 //
@@ -144,8 +150,8 @@ int main() {
 //    RubiksCube1d cube1;
 //    RubiksCube1d cube2;
 
-//    RubiksCubeBitboard cube1;
-//    RubiksCubeBitboard cube2;
+//    RubiksCube3d cube1;
+//    RubiksCube3d cube2;
 
 
 //  Equality and assignment of cubes --------------------------------------------------------------------------
@@ -171,7 +177,7 @@ int main() {
 
 //    unordered_map<RubiksCube1d, bool, Hash1d> mp1;
 
-//    unordered_map<RubiksCubeBitboard, bool, HashBitboard> mp1;
+//    unordered_map<RubiksCube3d, bool, HashBitboard> mp1;
 //
 //    mp1[cube1] = true;
 //    cube2.randomShuffle(8);
@@ -231,6 +237,44 @@ int main() {
     // for (auto move: solve_moves) cout << cube.getMoveLetter(move) << " ";
     // cout << "\n";
     // iddfsSolver.rubiksCube.print();
+
+
+
+    // IDA* SOLVER ---------------------------------------------------------------------------------------------------
+    RubiksCube3d cube;
+    cube.print();
+
+    vector<RubiksCube::MOVE> shuffle_moves = cube.randomShuffle(5);
+    for (auto move: shuffle_moves) cout << cube.getMove(move) << " ";
+    cout << "\n";
+    cube.print();
+
+    IDAstarSolver<RubiksCube3d, Hash3d> idAstarSolver(cube);
+    vector<RubiksCube::MOVE> solve_moves = idAstarSolver.solve();
+    for (auto move: solve_moves) cout << cube.getMove(move) << " ";
+    cout << "\n";
+    idAstarSolver.rubiksCube.print();
+
+    // CornerPatternDatabase Testing ---------------------------------------------------------------------------------
+
+    //    CornerPatternDatabase cornerDB;
+    //    RubiksCube3d cube;
+    //    cube.print();
+    //
+    //    cout << (int)cornerDB.getNumMoves(cube) << "\n";
+    //
+    //    cornerDB.setNumMoves(cube, 5);
+    //
+    //    cout << (int)cornerDB.getNumMoves(cube) << "\n";
+    //
+    //    cube.randomShuffle(1);
+    //    cube.print();
+    //    cout << (int)cornerDB.getNumMoves(cube) << "\n";
+    //
+    //    cornerDB.setNumMoves(cube, 6);
+    //
+    //    cout << (int)cornerDB.getNumMoves(cube) << "\n";
+
 
     return 0;
 }

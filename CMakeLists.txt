@@ -19,4 +19,9 @@ add_executable(RubiksChamp_V1
         PatternDatabases/PatternDatabase.h
         PatternDatabases/PermutationIndexer.h
         PatternDatabases/math.cpp
-        PatternDatabases/math.h)
+        PatternDatabases/math.h
+        PatternDatabases/CornerPatternDatabase.cpp
+        PatternDatabases/CornerPatternDatabase.h
+        PatternDatabases/CornerDBMaker.cpp
+        PatternDatabases/CornerDBMaker.h
+        Model/RubiksCubeBitboard.cpp)
