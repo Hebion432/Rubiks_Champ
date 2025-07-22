@@ -24,4 +24,6 @@ add_executable(RubiksChamp_V1
         PatternDatabases/CornerPatternDatabase.h
         PatternDatabases/CornerDBMaker.cpp
         PatternDatabases/CornerDBMaker.h
-        Model/RubiksCubeBitboard.cpp)
+        Model/RubiksCubeBitboard.cpp
+        PatternDatabases/CornerDBMaker.cpp
+        PatternDatabases/CornerDBMaker.h)

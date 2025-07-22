@@ -2,6 +2,7 @@
 // Created by Amit on 15/05/25.
 //
 
+#include <cmath>
 #include <fstream>
 #include <vector>
 #include <cstdint>

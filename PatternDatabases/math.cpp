@@ -3,6 +3,8 @@
 //
 
 #include "math.h"
+#include <cmath>
+
 
 // Calculates n!.
 uint32_t factorial(uint32_t n)

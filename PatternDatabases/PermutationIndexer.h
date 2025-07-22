@@ -7,6 +7,7 @@
 #define RUBIKS_CUBE_SOLVER_PERMUTATIONINDEXER_H
 
 #include <iostream>
+#include <cmath>
 #include <vector>
 #include <string>
 #include <map>

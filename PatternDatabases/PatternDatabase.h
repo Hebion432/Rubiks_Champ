@@ -24,9 +24,9 @@ class PatternDatabase {
     size_t size;
     size_t numItems;
 
-    PatternDatabase();
 
 public:
+    PatternDatabase();
     PatternDatabase(const size_t size);
     //    Testing for init_val
     PatternDatabase(const size_t size, uint8_t init_val);
