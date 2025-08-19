@@ -303,6 +303,7 @@ struct Hash3d {
                 }
             }
         }
-        return hash<string>()(str); // predefine functon to create hash -> return size_t
+        return hash<string>()(str);
+// predefine fC++ standard library's highly optimized, built-in hash function for strings.
     }
 };

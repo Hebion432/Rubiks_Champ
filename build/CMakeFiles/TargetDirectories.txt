@@ -1,0 +1,3 @@
+/Users/A_Myth/CLionProjects/RubiksChamp-V1/build/CMakeFiles/RubiksChamp_V1.dir
+/Users/A_Myth/CLionProjects/RubiksChamp-V1/build/CMakeFiles/edit_cache.dir
+/Users/A_Myth/CLionProjects/RubiksChamp-V1/build/CMakeFiles/rebuild_cache.dir
