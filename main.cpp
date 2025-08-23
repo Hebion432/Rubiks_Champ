@@ -12,7 +12,6 @@
 #include <limits>     // for numeric_limits
 
 
-#include "Model/RubiksCube3d.cpp"
 #include "Solver/IDDFSSolver.h"
 #include "Solver/BFSSolver.h"
 #include "Solver/DFSSolver.h"
@@ -226,7 +225,7 @@ int main() {
     // RubiksCube3d cube;
     // cube.print();
     //
-    // vector<RubiksCube::MOVE> shuffle_moves = cube.randomShuffle(7);
+    // vector<RubiksCube::MOVE> shuffle_moves = cube.randomShuffle(8);
     // for (auto move: shuffle_moves) cout << cube.getMoveLetter(move) << " ";
     // cout << "\n";
     // cube.print();
@@ -241,19 +240,19 @@ int main() {
 
 
     // IDA* SOLVER ---------------------------------------------------------------------------------------------------
-    RubiksCubeBitboard cube;
-    cube.print();
-
-    vector<RubiksCube::MOVE> shuffle_moves = cube.randomShuffle(11);
-    for (auto move: shuffle_moves) cout << cube.getMoveLetter(move) << " ";
-    cout << "\n";
-    cube.print();
-
-    IDAstarSolver<RubiksCubeBitboard, HashBitboard> idAstarSolver(cube, "Databases/cornerDepth5V1.txt");
-    vector<RubiksCube::MOVE> solve_moves = idAstarSolver.solve();
-    for (auto move: solve_moves) cout << cube.getMoveLetter(move) << " ";
-    cout << "\n";
-    idAstarSolver.rubiksCube.print();
+    // RubiksCubeBitboard cube;
+    // cube.print();
+    //
+    // vector<RubiksCube::MOVE> shuffle_moves = cube.randomShuffle(6);
+    // for (auto move: shuffle_moves) cout << cube.getMoveLetter(move) << " ";
+    // cout << "\n";
+    // cube.print();
+    //
+    // IDAstarSolver<RubiksCubeBitboard, HashBitboard> idAstarSolver(cube, "Databases/cornerDepth5V1.txt");
+    // vector<RubiksCube::MOVE> solve_moves = idAstarSolver.solve();
+    // for (auto move: solve_moves) cout << cube.getMoveLetter(move) << " ";
+    // cout << "\n";
+    // idAstarSolver.rubiksCube.print();
 
     // CornerPatternDatabase Testing ---------------------------------------------------------------------------------
 
@@ -277,25 +276,49 @@ int main() {
 
 
     // CornerDBMaker Testing --------------------------------------------------------------------------
-    // string fileName = "C:\\Users\\user\\CLionProjects\\rubiks-cube-solver\\Databases\\cornerDepth5V1.txt";
+    string fileName = "/Users/A_Myth/CLionProjects/RubiksChamp-V1/Database/cornerDepth5V1.txt";
 
-    //    Code to create Corner Database
-    //    CornerDBMaker dbMaker(fileName, 0x99);
-    //    dbMaker.bfsAndStore();
+       // Code to create Corner Database
+       // CornerDBMaker dbMaker(fileName, 0x99);
+       // dbMaker.bfsAndStore();
 
-    // RubiksCubeBitboard cube;
-    // auto shuffleMoves = cube.randomShuffle(9);
-    // cube.print();
-    // for (auto move: shuffleMoves) cout << cube.getMoveLetter(move) << " ";
-    // cout << "\n";
-    //
-    // IDAstarSolver<RubiksCubeBitboard, HashBitboard> idaStarSolver(cube, fileName);
-    // auto moves = idaStarSolver.solve();
-    //
-    // idaStarSolver.rubiksCube.print();
-    // for (auto move: moves) cout << cube.getMoveLetter(move) << " ";
-    // cout << "\n";
-    //
-    //
-    // return 0;
+    RubiksCubeBitboard cube;
+    cube.print();
+    cout<<"\n";
+
+    auto shuffleMoves = cube.randomShuffle(13);
+    cube.print();
+    cout<<"Moves made to shuffle : ";
+    for (auto move: shuffleMoves) cout << cube.getMoveLetter(move) << " ";
+    cout << "\n";
+
+    IDAstarSolver<RubiksCubeBitboard, HashBitboard> idaStarSolver(cube, fileName);
+    auto moves = idaStarSolver.solve();
+
+    idaStarSolver.rubiksCube.print();
+    cout<<"To solve use these moves : ";
+    for (auto move: moves) cout << cube.getMoveLetter(move) << " ";
+    cout << "\n";
+
+
+    return 0;
+
+
+
+    /**  IDA* Solver Test Results:
+    *  ------------------------------------------------------------------------------------
+    *    DB_Depth             DBMakeTime                #shuffles
+    *  ------------------------------------------------------------------------------------
+    *    6                    [1-2]min.                 <= 8 (quickly)
+    *  ------------------------------------------------------------------------------------
+    *    7                    [2-3]min.                 <= 9 (quickly)
+    *  ------------------------------------------------------------------------------------
+    *    8                    ~10 min.                  <=10 (quickly),
+    *                                                   =11 (some shuffles take few min.)
+    *  ------------------------------------------------------------------------------------
+    *    9                    [25-30]min.               <=11 (quickly)
+    *  ------------------------------------------------------------------------------------
+    */
+
+
 }

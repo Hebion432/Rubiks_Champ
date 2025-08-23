@@ -935,8 +935,6 @@ CMakeFiles/RubiksChamp_V1.dir/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/set \
-  /Users/A_Myth/CLionProjects/RubiksChamp-V1/Model/RubiksCube3d.cpp \
-  /Users/A_Myth/CLionProjects/RubiksChamp-V1/Model/RubiksCube.h \
   /Users/A_Myth/CLionProjects/RubiksChamp-V1/Solver/IDDFSSolver.h \
   /Users/A_Myth/CLionProjects/RubiksChamp-V1/Solver/../Model/RubiksCube.h \
   /Users/A_Myth/CLionProjects/RubiksChamp-V1/Solver/DFSSolver.h \
